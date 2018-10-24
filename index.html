@@ -1,0 +1,51 @@
+<!DOCTYPE doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+    <title>
+        Camera Capture Demo
+    </title>
+    <meta content="" name="description"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+	<center>
+    <video autoplay="" id="video" width="640" >
+    </video>
+    <br/>
+    <br/>
+    <button id="snap">
+        Snap Photo
+    </button>
+    <br/>
+    <br/>
+    <canvas height="640" id="canvas" width="480">
+    </canvas>
+    </center>
+    <script type="text/javascript">
+        // Grab elements, create settings, etc.
+var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+    });
+}
+
+// Elements for taking the snapshot
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+
+// Trigger photo take
+document.getElementById("snap").addEventListener("click", function() {
+	context.drawImage(video, 0, 0, 640, 480);
+});
+    </script>
+</body>
+</html>
