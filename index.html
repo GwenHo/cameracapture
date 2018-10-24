@@ -14,7 +14,12 @@
     max-width: 480px;
     height: 640px;
 }
-    </style>
+
+canvas{
+	max-width: 480px;
+    min-height: 640px;
+    
+}</style>
 </head>
 <body>
 	<center>
@@ -27,7 +32,7 @@
     </button>
     <br/>
     <br/>
-    <canvas height="640" id="canvas" width="480">
+    <canvas id="canvas">
     </canvas>
     </center>
     <script type="text/javascript">
@@ -50,7 +55,7 @@ var video = document.getElementById('video');
 
 // Trigger photo take
 document.getElementById("snap").addEventListener("click", function() {
-	context.drawImage(video, 0, 0, 640, 480);
+	context.drawImage(video, 0, 0, 640, 640);
 });
     </script>
 </body>
